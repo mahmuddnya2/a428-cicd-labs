@@ -5,13 +5,7 @@ node {
         }
         stage('Test') {
             sh './jenkins/scripts/test.sh'
-            script {
-            choice = input(id: 'my-choice', message: 'Finished using the website? (Click "Proceed" to continue)', choices: ['Proceed', 'Abort'], submitter: { choice ->
-                if (choice == 'Abort') {
-                    error 'Process aborted by user'
-                }
-            })
-        }
+            input message: 'Finished using the website? (Click "Proceed" to continue)'
         }
         stage('Deploy'){
             sh './jenkins/scripts/deliver.sh' 
