@@ -5,7 +5,6 @@ node {
         }
         stage('Test') {
             sh './jenkins/scripts/test.sh'
-            input message: 'Finished using the website?'
             script {
             choice = input(id: 'my-choice', message: 'Finished using the website? (Click "Proceed" to continue)', choices: ['Proceed', 'Abort'], submitter: { choice ->
                 if (choice == 'Abort') {
