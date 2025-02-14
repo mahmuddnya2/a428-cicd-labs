@@ -5,11 +5,11 @@ node {
         }
         stage('Test') {
             sh './jenkins/scripts/test.sh'
-            input message: 'Finished using the website? (Click "Proceed" to continue)'
+            input message: 'Lanjut ke tahap Deploy? (Click "Proceed" to continue)'
         }
         stage('Deploy'){
             sh './jenkins/scripts/deliver.sh' 
-            sleep(10)
+            sleep(60)
             sh './jenkins/scripts/kill.sh' 
         }
     }
